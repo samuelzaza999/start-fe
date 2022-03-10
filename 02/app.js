@@ -74,31 +74,53 @@ arr1.push(4);
 console.log(arr1.join('&'));
 console.log(arr1.sort());
 
+// 배열 CRUD : 생성, 읽기, 갱신, 삭제
+// create
 var todos = ['운동'];
 var todo = '게임';
 todos.push(todo);
 console.log(todos);
 
+// read : 배열 돌면서 한번씩 실행
 var todos = ['운동', '게임'];
-todos.forEach(function(todo) {
+todos.forEach(function(todo) {      
   console.log(todo);
 });
 
+// update
 var todos = ['운동', '게임'];
-var updateTodo = '게임';
+var updateTodo = '게임';            
 var updateIndex = todos.findIndex(function(todo) {
   return todo === updateTodo;
 });
 todos[updateIndex] = '공부';
 console.log(todos);
 
+var todos = ['운동', '게임'];
+var updateTodo = '게임';
+var newTodos = todos.map(function(todo) {
+    if (todo === updateTodo) {
+      return '공부';
+    }
+    return todo;
+  });
+console.log(newTodos);
+
+// delete
 var todos = ['운동', '공부', '목욕'];
-var deleteTodo = '공부';
+var deleteTodo = '공부';            
 var deleteIndex = todos.findIndex(function(todo) {
   return todo === deleteTodo;
 });
 todos.splice(deleteIndex, 1);
 console.log(todos);
+
+var todos = ['운동', '공부'];
+var deleteTodo = '공부';
+var newTodos = todos.filter(function(todo) {        // 조건대로 걸러낸 새 배열
+  return todo !== deleteTodo;
+});
+console.log(newTodos);
 
 //=========================
 var age = 20;
