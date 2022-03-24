@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset=utf-8 />
+    <title>source</title>
+    <style>
+        span{
+            width: 100px;
+            height: 100px;
+            display: block;
+        }
+        .black{
+            background-color: black;
+        }
+        .white{
+            background-color: white;
+        }
+    </style>
+</head>
+<body>
+
+<div id="board">
+    <!-- 이 HTML을 자바스크립트로 추가하면 됩니다.
+      <span class="black"></span>
+      <span class="white"></span>
+      <span class="black"></span>
+      <span class="white"></span>
+      <span class="white"></span>
+      <span class="black"></span>
+      <span class="white"></span>
+      <span class="black"></span>
+      <span class="black"></span>
+      <span class="white"></span>
+      <span class="black"></span>
+      <span class="white"></span>
+      <span class="white"></span>
+      <span class="black"></span>
+      <span class="white"></span>
+      <span class="black"></span>
+    //-->
+</div>
+<script>
+    var board = document.getElementById("board");
+    const rectB = '<span class="black"></span>';
+    const rectW = '<span class="white"></span>';
+    const rectR = '<span class="red"></span>';
+
+    for(var i=0; i<4; i++){
+        for(var j=0; j<4; j++){
+            // TODO : 여기에 필요한 코드를 작성해주세요.
+            if(i%2==0){
+                document.querySelector('#board').innerHTML = rectB;
+                document.querySelector('#board').innerHTML = rectW;
+                document.querySelector('#board').innerHTML = rectB;
+                document.querySelector('#board').innerHTML = rectW;
+            }
+            else{
+                document.querySelector('#board').innerHTML = rectW;
+                document.querySelector('#board').innerHTML = rectB;
+                document.querySelector('#board').innerHTML = rectW;
+                document.querySelector('#board').innerHTML = rectB;
+            }
+        }
+    }
+</script>
+</body>
+</html>
