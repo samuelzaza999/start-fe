@@ -41,7 +41,7 @@ console.log(a, b);
 function byValue(count){
   count += 2;
 }
-var count = 3
+var count = 3;
 byValue(count);
 console.log(count);
 
@@ -82,7 +82,7 @@ console.log(count);
    var y = 1;
    return x + y;    // return문 없으면 undefined 반환
  }
- var sun = function(){
+ var sum = function(){
   var y = 1;
   return x + y;
  }
@@ -188,7 +188,7 @@ function sum(x, y){
   if(!y) y = 1;
   console.log(x + y);
 }
-sum(3);
+sum(3); 
 
 // 가변길이 전달인자 : arguments 객체로 인자 전달
 function sum(){
