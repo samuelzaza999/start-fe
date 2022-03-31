@@ -1,0 +1,101 @@
+<!-- 
+    https://hianna.tistory.com/469
+    https://webisfree.com/2015-10-23/[%EC%A0%9C%EC%9D%B4%EC%BF%BC%EB%A6%AC]-%EC%9A%94%EC%86%8C-%EB%B3%B5%EC%82%AC%ED%95%98%EA%B8%B0-clone()
+    https://cpro95.tistory.com/149
+ -->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>DOM</title>
+    <style>
+      body {
+        padding: 10px;
+      }
+      .box {
+        width: 100px;
+        height: 30px;
+        background-color: #ddd;
+      }
+      .red {
+        background-color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <input type="text" class="txt" value="hello" />
+      <button class="text-btn">TEXT 넣기</button>
+      <br />
+      <button class="add-red">빨간색으로</button>
+      <button class="add-btn">추가</button>
+      <button class="delete-btn">삭제</button>
+      <button class="reset-btn">초기화</button>
+      <button class="toggle-btn">보이기,숨기기 토글</button>
+      <button class="image-btn">이미지</button>
+    </div>
+
+    <div id="content">
+        <div class="box"></div>
+    </div>
+
+    <script>
+        var $box = document.querySelector('.box');
+        var $boxes = document.querySelectorAll('.box');
+        var $content = document.getElementById('content');
+        var boxesLength = $boxes.length;
+
+        var $textBtn = document.querySelector('.text-btn');
+        var $addRed = document.querySelector('.add-red');
+        var $addBtn = document.querySelector('.add-btn');
+        var $deleteBtn = document.querySelector('.delete-btn');
+        var $resetBtn = document.querySelector('.reset-btn');
+        var $toggleBtn = document.querySelector('.toggle-btn');
+        var $imageBtn = document.querySelector('.image-btn');
+
+        $textBtn.addEventListener('click', textBtn);
+        $addRed.addEventListener('click', addRed);
+        $addBtn.addEventListener('click', addBtn);
+        $deleteBtn.addEventListener('click', deleteBtn);
+        $resetBtn.addEventListener('click', resetBtn);
+        $toggleBtn.addEventListener('click', toggleBtn);
+        $imageBtn.addEventListener('click', imageBtn);
+
+        function textBtn(){
+            for(var i=0; i<boxesLength; i++){
+                if($boxes[i].classList.contains('red')) return;
+                $boxes[i].className += ' red';
+            }
+        }
+
+        // 1
+        function addRed(event){
+            for(var i=0; i<boxesLength; i++){
+                if($boxes[i].classList.contains('red')) return;
+                $boxes[i].className += ' red';
+            }
+        }
+
+        // 2
+        function addBtn(event){
+            var cloneBox = $box.cloneNode();
+            $content.appendChild(cloneBox);
+        }
+
+        function deleteBtn(){
+
+        }
+        function resetBtn(){
+
+        }
+        function toggleBtn(){
+
+        }
+        function imageBtn(){
+
+        }
+    </script>
+  </body>
+</html>
