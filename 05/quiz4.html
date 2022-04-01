@@ -1,9 +1,23 @@
+<!-- 
+  https://ko.javascript.info/mouse-drag-and-drop
+ -->
+
 <!DOCTYPE html>
 <html lang="ko">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <style>
+      #box{
+        width: 100px;
+        height: 100px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: gold;
+      }
+    </style>
   </head>
   <body>
     <div id="box">
@@ -18,5 +32,50 @@
       </li>
       <li>클릭을 해제하면 드래그가 멈춥니다 (mouseup 이벤트)</li>
     </ol>
+
+    <script>
+      var $box = document.getElementById('box');
+
+      $box.onmousedown = function(event){
+        // 스타일 부여
+        $box.style.position = 'absolute';
+        $box.style.zIndex = 1000;
+
+
+        // 1. 마우스 누르기 : 누른 좌표에서 박스 왼쪽 위의 거리만큼 빼기
+        var shiftX = event.clientX - $box.getBoundingClientRect().left;
+        var shiftY = event.clientY - $box.getBoundingClientRect().top; 
+
+        // body 기준으로 위치 지정
+        document.body.append($box);
+
+
+        // 2. 마우스 움직이기 : mousemove로 박스 움직이기
+        function moveAt(pageX, pageY){
+          $box.style.left = pageX - shiftX + 'px';
+          $box.style.top = pageY - shiftY + 'px';
+        }
+
+        moveAt(event.pageX, event.pageY);
+
+        function onMouseMove(event){
+          moveAt(event.pageX, event.pageY);
+        }
+
+        document.addEventListener('mousemove', onMouseMove);
+
+
+        // 3. 마우스 떼기 : 불필요한 핸들러 제거
+        $box.onmouseup = function(){
+          document.removeEventListener('mousemove', onMouseMove);
+          $box.onmouseup = null;
+        };
+      };
+
+      // 브라우저 자체 드래그와 중복 방지
+      $box.ondragstart = function() {
+        return false;
+      };
+    </script>
   </body>
 </html>
