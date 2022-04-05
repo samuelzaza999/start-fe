@@ -42,7 +42,7 @@
         $box.style.zIndex = 1000;
 
 
-        // 1. 마우스 누르기 : 누른 좌표에서 박스 왼쪽 위의 거리만큼 빼기
+        // 1. 마우스 누르기 : 누른 좌표(커서 상태 좌표)에서 박스 왼쪽 위의 거리만큼 빼기
         var shiftX = event.clientX - $box.getBoundingClientRect().left;
         var shiftY = event.clientY - $box.getBoundingClientRect().top; 
 

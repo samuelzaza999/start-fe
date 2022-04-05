@@ -1,37 +1,37 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset=utf-8 />
-        <title>source</title>
-        <style>
-            html{
-                background-color: gray;
-            }
-            #board{
-                width: 400px;
-                height: 400px;
-                border: 3px solid black;
-            }
-            span{
-                width: 100px;
-                height: 100px;
-                display: block;
-                float: left;    /*가로 정렬*/
-            }
-            .black{
-                background-color: black;
-            }
-            .white{
-                background-color: white;
-            }
-            .selected{
-                background-color: red;
-            }
-        </style>
-    </head>
-    <body>
-        <div id="board">
-            <!-- 이 HTML을 자바스크립트로 추가하면 됩니다.
+  <head>
+    <meta charset="utf-8" />
+    <title>source</title>
+    <style>
+      html {
+        background-color: gray;
+      }
+      #board {
+        width: 400px;
+        height: 400px;
+        border: 3px solid black;
+      }
+      span {
+        width: 100px;
+        height: 100px;
+        display: block;
+        float: left; /*가로 정렬*/
+      }
+      .black {
+        background-color: black;
+      }
+      .white {
+        background-color: white;
+      }
+      .selected {
+        background-color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="board">
+      <!-- 이 HTML을 자바스크립트로 추가하면 됩니다.
             <span class="black"></span>
             <span class="white"></span>
             <span class="black"></span>
@@ -49,48 +49,45 @@
             <span class="white"></span>
             <span class="black"></span>
             //-->
-        </div>
-        <script>
-            // 1. 보드 깔기
-            var boardCount = 16;
-            var str = '';
-            var className = 'white';
-            var isWhite = true;
+    </div>
+    <script>
+      // 1. 보드 깔기
+      var boardCount = 16;
+      var str = "";
+      var className = "white";
+      var isWhite = true;
 
-            var $board = document.getElementById("board");
+      var $board = document.getElementById("board");
 
-            for(var i=0; i<boardCount; i++){
-                if(i%4!=0)
-                    className = (isWhite) ? 'black' : 'white';
-                
-                str += '<span class="' + className + '"></span>';       // 분리하면 적용 안 되는 이유?
+      for (var i = 0; i < boardCount; i++) {
+        if (i % 4 != 0) className = isWhite ? "black" : "white";
 
-                if(i%4!=0)
-                    isWhite = (isWhite) ? false : true;
-            }
-            $board.innerHTML = str;
+        str += '<span class="' + className + '"></span>'; // 분리하면 적용 안 되는 이유?
 
+        if (i % 4 != 0) isWhite = isWhite ? false : true;
+      }
+      $board.innerHTML = str;
 
-            // 2. 클릭 이벤트 만들기
-            var $boards = document.querySelectorAll('span');
-            var $select = null;
-            var boardsLength = $boards.length;
+      // 2. 클릭 이벤트 만들기
+      var $boards = document.querySelectorAll("span");
+      var $select = null;
+      var boardsLength = $boards.length;
 
-            function select(event){
-                // 클래스명은 띄어쓰기 기준으로 덧씌우기 가능 -> 이름만 지워 원상복귀
-                if($select){
-                    $select.className = $select.className.replace(' selected', '');
-                }
+      function select(event) {
+        // 클래스명은 띄어쓰기 기준으로 덧씌우기 가능 -> 이름만 지워 원상복귀
+        if ($select) {
+          $select.className = $select.className.replace(" selected", "");
+        }
 
-                // 내가 선택한 이벤트
-                var el = event.currentTarget;       // 엘리멘트 접근
-                el.className += ' selected';         // 이벤트 발생 부위의 클래스 덮기 -> 빨간색으로.
-                $select = el;
-            }
+        // 내가 선택한 이벤트
+        var el = event.currentTarget; // 엘리멘트 접근
+        el.className += " selected"; // 이벤트 발생 부위의 클래스 덮기 -> 빨간색으로.
+        $select = el;
+      }
 
-            for(var i=0; i<boardsLength; i++){
-                $boards[i].addEventListener('click', select);   // 클릭으로 이벤트 발생
-            }
-        </script>
-    </body>
+      for (var i = 0; i < boardsLength; i++) {
+        $boards[i].addEventListener("click", select); // 클릭으로 이벤트 발생
+      }
+    </script>
+  </body>
 </html>

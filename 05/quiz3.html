@@ -5,7 +5,7 @@
     https://stackoverflow.com/questions/34193751/js-remove-last-child
     https://unikys.tistory.com/249
     https://xetown.com/questions/1239870
-
+    https://ko.javascript.info/introduction-browser-events
  -->
 
 <!DOCTYPE html>
@@ -28,6 +28,7 @@
       }
     </style>
   </head>
+
   <body>
     <div>
       <input type="text" class="txt" value="hello" />
@@ -42,88 +43,86 @@
     </div>
 
     <div id="content">
-        <div class="box"></div>
+      <div class="box">
+        <div id="box-img"></div>
+      </div>
     </div>
 
     <script>
-      var $txt = document.querySelector('.txt');
-      var $box = document.querySelector('.box');
-      var $boxes = document.querySelectorAll('.box');
-      var $content = document.getElementById('content');
-      
+      var $txt = document.querySelector(".txt");
+      var $box = document.querySelector(".box");
+      var $boxes = document.querySelectorAll(".box");
+      var $boxImg = document.getElementById("box-img");
+      var $content = document.getElementById("content");
+
       var boxesLength = $boxes.length;
       var clicked = false;
-      var txtInBox = '';
+      var txtInBox = "";
 
-      var $textBtn = document.querySelector('.text-btn');
-      var $addRed = document.querySelector('.add-red');
-      var $addBtn = document.querySelector('.add-btn');
-      var $deleteBtn = document.querySelector('.delete-btn');
-      var $resetBtn = document.querySelector('.reset-btn');
-      var $toggleBtn = document.querySelector('.toggle-btn');
-      var $imageBtn = document.querySelector('.image-btn');
+      var $textBtn = document.querySelector(".text-btn");
+      var $addRed = document.querySelector(".add-red");
+      var $addBtn = document.querySelector(".add-btn");
+      var $deleteBtn = document.querySelector(".delete-btn");
+      var $resetBtn = document.querySelector(".reset-btn");
+      var $toggleBtn = document.querySelector(".toggle-btn");
+      var $imageBtn = document.querySelector(".image-btn");
 
-      $textBtn.addEventListener('click', textBtn);
-      $addRed.addEventListener('click', addRed);
-      $addBtn.addEventListener('click', addBtn);
-      $deleteBtn.addEventListener('click', deleteBtn);
-      $resetBtn.addEventListener('click', resetBtn);
-      $toggleBtn.addEventListener('click', toggleBtn);
-      $imageBtn.addEventListener('click', imageBtn);
+      $textBtn.addEventListener("click", textBtn);
+      $addRed.addEventListener("click", addRed);
+      $addBtn.addEventListener("click", addBtn);
+      $deleteBtn.addEventListener("click", deleteBtn);
+      $resetBtn.addEventListener("click", resetBtn);
+      $toggleBtn.addEventListener("click", toggleBtn);
+      $imageBtn.addEventListener("click", imageBtn);
 
       // 4?
-      function textBtn(){
-        for(var i=0; i<boxesLength; i++){
-          
-        }
-      }
+      function textBtn() {}
 
       // 1
-      function addRed(){
-        for(var i=0; i<boxesLength; i++){
-          if($boxes[i].classList.contains('red')) return;
-          $boxes[i].className += ' red';
+      function addRed() {
+        for (var i = 0; i < boxesLength; i++) {
+          if ($boxes[i].classList.contains("red")) return;
+          $boxes[i].className += " red";
         }
       }
 
       // 2
-      function addBtn(){
+      function addBtn() {
         var cloneBox = $box.cloneNode();
         $content.appendChild(cloneBox);
       }
 
       // 3
-      function deleteBtn(){
+      function deleteBtn() {
         $content.removeChild($content.lastChild);
       }
 
       // 5
-      function resetBtn(){
+      function resetBtn() {
         while ($content.hasChildNodes())
           $content.removeChild($content.firstChild);
       }
 
       // 6
-      function toggleBtn(){
-        if(!clicked){
-          $content.style.display = 'none';
+      function toggleBtn() {
+        if (!clicked) {
+          $content.style.display = "none";
           clicked = true;
-        }
-        else{
-          $content.style.display = 'block';
+        } else {
+          $content.style.display = "block";
           clicked = false;
         }
       }
 
       // 7?
-      function imageBtn(){
-        if(!($content.classList.contains('box'))){
+      function imageBtn() {
+        if (!$content.classList.contains("box")) {
           var cloneBox = $box.cloneNode();
           $content.appendChild(cloneBox);
         }
-
+        const image = '<a><img src="https://i.imgur.com/69NjYBH.png"></a>';
+        $boxImg.innerHTML = image;
       }
-
     </script>
   </body>
 </html>

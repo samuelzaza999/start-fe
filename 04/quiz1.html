@@ -1,81 +1,120 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="kr">
-    <head>
-        <meta charset="UTF-8">
-        <title>문제소스</title>
-        <style>
-            #content{
-                text-align: center;
-            }
-        </style>
-    </head>
-    <body>
-        <div id="content" class="wrap"></div>
-        <div id="content">
-            <button class="btn-prev">이전</button>
-            <span class="page">page</span> / <span class="total-page">totalPage</span>
-            <button class="btn-next">다음</button>
-        </div>
-        <script>
-            // 캐로셀 형식
-            var todayPhoto = [
-                {"url":"http://media.daum.net/photo/2841","img":"http://icon.daumcdn.net/w/c/12/05/82877085750988319.jpeg","title":"&quot;뜨면 끝장&quot; 최강 공격헬기 성능이 설마","id":"20120516082207657"}
-                ,{"url":"http://media.daum.net/entertain/photo/gallery/?gid=100320","img":"http://icon.daumcdn.net/w/c/12/05/82876693901189319.jpeg","title":"&#39;오늘만&#39; 필리핀 새댁 5개국어 능통 엄친딸","id":"20120516091011626"}
-                ,{"url":"http://media.daum.net/photo/4010","img":"http://icon.daumcdn.net/w/c/12/05/82876307459008319.jpeg","title":"[북한 결혼식 풍경] 신랑·신부 &quot;행복합니다&quot;","id":"20120516092605081"}
-                ,{"url":"http://sports.media.daum.net/general/gallery/gagsports/index.html","img":"http://icon.daumcdn.net/w/c/12/05/81730673405131839.jpeg","title":"&#39;내가 더 잘해&#39; 후보GK 경기 난입해 선방","id":"20120516100608409"}
-                ,{"url":"http://sports.media.daum.net/general/gallery/0516ufc/index.html","img":"http://icon.daumcdn.net/w/c/12/05/81728759258718839.jpeg","title":"양동이의 하이킥에 타바레스 &#39;주춤&#39;","id":"20120516093313331"}
-                ,{"url":"http://media.daum.net/entertain/photo/gallery/?gid=100539","img":"http://icon.daumcdn.net/w/c/12/05/81728404408992839.jpeg","title":"이승철 아내와 딸 사진 공개 &quot;사주에. .&quot;","id":"20120516093918544"}
-                ,{"url":"http://media.daum.net/photo/3899","img":"http://icon.daumcdn.net/w/c/12/05/81728227037306839.jpeg","title":"생후 6개월에 프랑스로 입양됐던 아이가..","id":"20120516030614331"}
-                ,{"url":"http://sports.media.daum.net/general/gallery/STARKIMYUNA/index.html","img":"http://icon.daumcdn.net/w/c/12/05/81727815537682839.jpeg","title":"&#39;교생&#39; 김연아, 스승의날에도 인기폭발","id":"20120516092003892"}
-            ];
+  <head>
+    <meta charset="UTF-8" />
+    <title>문제소스</title>
+    <style>
+      #content {
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="content" class="wrap"></div>
+    <div id="content">
+      <button class="btn-prev">이전</button>
+      <span class="page">page</span> / <span class="total-page">totalPage</span>
+      <button class="btn-next">다음</button>
+    </div>
+    <script>
+      // 캐로셀 형식
+      var todayPhoto = [
+        {
+          url: "http://media.daum.net/photo/2841",
+          img: "http://icon.daumcdn.net/w/c/12/05/82877085750988319.jpeg",
+          title: "&quot;뜨면 끝장&quot; 최강 공격헬기 성능이 설마",
+          id: "20120516082207657",
+        },
+        {
+          url: "http://media.daum.net/entertain/photo/gallery/?gid=100320",
+          img: "http://icon.daumcdn.net/w/c/12/05/82876693901189319.jpeg",
+          title: "&#39;오늘만&#39; 필리핀 새댁 5개국어 능통 엄친딸",
+          id: "20120516091011626",
+        },
+        {
+          url: "http://media.daum.net/photo/4010",
+          img: "http://icon.daumcdn.net/w/c/12/05/82876307459008319.jpeg",
+          title: "[북한 결혼식 풍경] 신랑·신부 &quot;행복합니다&quot;",
+          id: "20120516092605081",
+        },
+        {
+          url: "http://sports.media.daum.net/general/gallery/gagsports/index.html",
+          img: "http://icon.daumcdn.net/w/c/12/05/81730673405131839.jpeg",
+          title: "&#39;내가 더 잘해&#39; 후보GK 경기 난입해 선방",
+          id: "20120516100608409",
+        },
+        {
+          url: "http://sports.media.daum.net/general/gallery/0516ufc/index.html",
+          img: "http://icon.daumcdn.net/w/c/12/05/81728759258718839.jpeg",
+          title: "양동이의 하이킥에 타바레스 &#39;주춤&#39;",
+          id: "20120516093313331",
+        },
+        {
+          url: "http://media.daum.net/entertain/photo/gallery/?gid=100539",
+          img: "http://icon.daumcdn.net/w/c/12/05/81728404408992839.jpeg",
+          title: "이승철 아내와 딸 사진 공개 &quot;사주에. .&quot;",
+          id: "20120516093918544",
+        },
+        {
+          url: "http://media.daum.net/photo/3899",
+          img: "http://icon.daumcdn.net/w/c/12/05/81728227037306839.jpeg",
+          title: "생후 6개월에 프랑스로 입양됐던 아이가..",
+          id: "20120516030614331",
+        },
+        {
+          url: "http://sports.media.daum.net/general/gallery/STARKIMYUNA/index.html",
+          img: "http://icon.daumcdn.net/w/c/12/05/81727815537682839.jpeg",
+          title: "&#39;교생&#39; 김연아, 스승의날에도 인기폭발",
+          id: "20120516092003892",
+        },
+      ];
 
-            var page = 1;         // 현 페이지
-            var viewMax = 3       // 한 번에 보여줄 갯수
-            var totalPage = Math.ceil(todayPhoto.length / viewMax);     // 반올림으로 일반화
-            
-            // html 연결 : 일반 변수와 구별
-            var $wrap = document.querySelector('.wrap');
-            var $btnPrev = document.querySelector('.btn-prev');
-            var $btnNext = document.querySelector('.btn-next');
-            var $page = document.querySelector('.page');
-            var $totalPage = document.querySelector('.total-page');
+      var page = 1; // 현 페이지
+      var viewMax = 3; // 한 번에 보여줄 갯수
+      var totalPage = Math.ceil(todayPhoto.length / viewMax); // 반올림으로 일반화
 
-            // click시 함수 작동
-            $btnPrev.addEventListener('click', prev);
-            $btnNext.addEventListener('click', next);
+      // html 연결 : 일반 변수와 구별
+      var $wrap = document.querySelector(".wrap");
+      var $btnPrev = document.querySelector(".btn-prev");
+      var $btnNext = document.querySelector(".btn-next");
+      var $page = document.querySelector(".page");
+      var $totalPage = document.querySelector(".total-page");
 
-            function prev(){
-                if(page == 1) return;
-                page--;
-                printImg(page);
-            }
-            function next(){
-                if(page == totalPage) return;       // 최대 위치에서 작동 없게
-                page++;
-                printImg(page);
-            }
+      // click시 함수 작동
+      $btnPrev.addEventListener("click", prev);
+      $btnNext.addEventListener("click", next);
 
-            function printImg(page){
-                // startIndex가 변하면서 for의 범위도 변화해 출력하는 사진 변경
-                var startIndex = getStartIndex(page);
-                var str = '';
-                for(var i = startIndex; i < startIndex + viewMax; i++){
-                    if(todayPhoto[i]){
-                        str += '<img src="' + todayPhoto[i].img + '"> ';
-                    }
-                }
-                $wrap.innerHTML = str;
-                $page.innerHTML = page;
-                $totalPage.innerHTML = totalPage;
-            }
+      function prev() {
+        if (page == 1) return;
+        page--;
+        printImg(page);
+      }
+      function next() {
+        if (page == totalPage) return; // 최대 위치에서 작동 없게
+        page++;
+        printImg(page);
+      }
 
-            function getStartIndex(page){
-                var startIndex = (page - 1) * viewMax;      // 각 항목에서 첫번째로 나오는 사진
-                return startIndex;
-            }
+      function printImg(page) {
+        // startIndex가 변하면서 for의 범위도 변화해 출력하는 사진 변경
+        var startIndex = getStartIndex(page);
+        var str = "";
+        for (var i = startIndex; i < startIndex + viewMax; i++) {
+          if (todayPhoto[i]) {
+            str += '<img src="' + todayPhoto[i].img + '"> ';
+          }
+        }
+        $wrap.innerHTML = str;
+        $page.innerHTML = page;
+        $totalPage.innerHTML = totalPage;
+      }
 
-            printImg(page);
+      function getStartIndex(page) {
+        var startIndex = (page - 1) * viewMax; // 각 항목에서 첫번째로 나오는 사진
+        return startIndex;
+      }
 
-        </script>
-    </body>
+      printImg(page);
+    </script>
+  </body>
 </html>
