@@ -6,14 +6,14 @@ const App = () => {
   $result = $("#result");
 
   $btn.addEventListener("click", () => {
-    $result.innerText = $num.value;
+    if (Number($num.value)) gugu($num.value);
+    else alert("숫자를 입력하세요");
   });
 
-  function gugu() {
-    for (var i = 2; i <= 9; i++) {
-      for (var j = 1; j <= 10; j++) {
-        console.log(i + " * " + j + " = " + i * j);
-      }
+  function gugu(input) {
+    if ($result.innerText != "") $result.innerText = "";
+    for (var i = 1; i <= 10; i++) {
+      $result.innerText += `${input} * ${i} = ${input * i}\n`;
     }
   }
 };
