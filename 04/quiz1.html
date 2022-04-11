@@ -70,8 +70,8 @@
       ];
 
       var page = 1; // 현 페이지
-      var viewMax = 3; // 한 번에 보여줄 갯수
-      var totalPage = Math.ceil(todayPhoto.length / viewMax); // 반올림으로 일반화
+      var listNum = 3; // 한 번에 보여줄 갯수
+      var totalPage = Math.ceil(todayPhoto.length / listNum); // 반올림으로 일반화
 
       // html 연결 : 일반 변수와 구별
       var $wrap = document.querySelector(".wrap");
@@ -99,7 +99,7 @@
         // startIndex가 변하면서 for의 범위도 변화해 출력하는 사진 변경
         var startIndex = getStartIndex(page);
         var str = "";
-        for (var i = startIndex; i < startIndex + viewMax; i++) {
+        for (var i = startIndex; i < startIndex + listNum; i++) {
           if (todayPhoto[i]) {
             str += '<img src="' + todayPhoto[i].img + '"> ';
           }
@@ -110,7 +110,7 @@
       }
 
       function getStartIndex(page) {
-        var startIndex = (page - 1) * viewMax; // 각 항목에서 첫번째로 나오는 사진
+        var startIndex = (page - 1) * listNum; // 각 항목에서 첫번째로 나오는 사진
         return startIndex;
       }
 
