@@ -22,8 +22,4 @@ $boxes.forEach(function (box) {
       box.onmouseup = null;
     };
   };
-
-  $box.ondragstart = function () {
-    return false;
-  };
 });
