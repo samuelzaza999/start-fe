@@ -14,12 +14,12 @@ const App = () => {
   }
 
   $bug.addEventListener("click", () => {
-    $point.innerText = parseInt($point.innerText, 10) + 1;
+    $point.innerText = parseInt($point.innerText, 10)++;
     $bug.style.display = "none";
-    event.stopPropagation();
+    event.stopPropagation();  // 이벤트 전파 방지
   });
   $box.addEventListener("click", () => {
-    $life.innerText = parseInt($life.innerText, 10) - 1;
+    $life.innerText = parseInt($life.innerText, 10)--;
     if ($life.innerText == "0") {
       alert("game over");
       clearInterval(interval);
