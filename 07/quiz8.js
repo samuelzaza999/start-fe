@@ -1,6 +1,4 @@
-// https://grace-go.tistory.com/86
-
-const $ = (selector) => document.querySelector(selector);
+var $ = (selector) => document.querySelector(selector);
 
 const App = () => {
   $box = $("#box");
@@ -8,41 +6,40 @@ const App = () => {
   $max = $("#max");
   $btn = $("#btn");
 
-  let btnClick = false;
+  // const로 묶인 $ 산하는 직접 움직이지 않고 따로 변수를 둬서 마지막에 삽입하는 게 좋다
+  let boxValue = 0;
+  let anim = null;
+  let isClick = false;
 
-  function animation(e) {
-    e += 10;
+  // 함수로 만들어야 가독성, 끼워넣기 좋음
+  // value를 갱신하는 방법이 parse 뿐인가?
+  function randomNum() {
+    return Math.floor(
+      Math.random() * (parseInt($max.value) - parseInt($min.value)) +
+        parseInt($min.value)
+    );
+  }
+
+  function actBtn() {
+    isClick ? ($btn.disabled = true) : ($btn.disabled = false);
   }
 
   function running() {
-    if (
-      !(Number($min.value) && Number($max.value) && $min.value < $max.value)
-    ) {
-      alert("올바른 값 입력");
-      return;
-    }
+    boxValue = randomNum() - 100;
+    anim = setInterval(() => {
+      isClick = true;
+      actBtn();
+      boxValue += 10;
+      $box.innerText = parseInt(boxValue);
+    }, 50);
+    setTimeout(() => {
+      isClick = false;
+      actBtn();
+      clearInterval(anim);
+    }, 500);
+    // setInterval로 변화한 값을 어떻게 불러올까?
   }
 
-  $btn.addEventListener("click", () => {
-    btnClick ? ($btn.disabled = true) : ($btn.disabled = false);
-    if (Number($min.value) && Number($max.value) && $min.value < $max.value) {
-      btnClick = true;
-
-      $box.innerText = Math.floor(
-        (Math.floor(Math.random() * ($max.value - $min.value)) + $min.value) /
-          100
-      );
-      var aniStartNum = parseInt($box.innerText, 10) - 100;
-      let interval = setInterval(() => animation(aniStartNum), 100);
-      for (var i = 0; i < 10; i++) {
-        $box.innerText = aniStartNum;
-      }
-      clearInterval(interval);
-
-      btnClick = false;
-    } else alert("올바른 값 입력");
-  });
-
-  //   $btn.addEventListener("click", );
+  $btn.addEventListener("click", running);
 };
 App();
