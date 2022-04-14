@@ -30,14 +30,13 @@ const App = () => {
       isClick = true;
       actBtn();
       boxValue += 10;
-      $box.innerText = parseInt(boxValue);
+      $box.innerText = parseInt(boxValue); // setInterval로 변화한 값을 어떻게 불러올까?
     }, 50);
     setTimeout(() => {
       isClick = false;
       actBtn();
       clearInterval(anim);
-    }, 500);
-    // setInterval로 변화한 값을 어떻게 불러올까?
+    }, 500); // 셋타임아웃 내 클리어로 횟수 제한
   }
 
   $btn.addEventListener("click", running);
