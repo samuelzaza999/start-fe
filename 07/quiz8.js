@@ -1,4 +1,4 @@
-var $ = (selector) => document.querySelector(selector);
+const $ = (selector) => document.querySelector(selector);
 
 const App = () => {
   $box = $("#box");
