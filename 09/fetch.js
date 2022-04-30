@@ -23,6 +23,6 @@ function getFetch(url, callback) {
 
 // f12 - 네트워크 - fetch/XHR - json 더블클릭 - 링크 복사 (access-control-allow-origin 따라 실행 갈림)
 const url =
-  "https://gfp.veta.naver.com/adcall?u=p_theme_sports&xdid=p_theme_sports_div&p=da_dom_id%3Ap_theme_sports_div&c=https%3A%2F%2Fwww.naver.com%2F&sv=0.4.1&sn=web&sa=0&rui=89891164523555170";
+  "https://gfp.veta.naver.com/adcall?u=p_main_timeboard&xdid=veta_top_inner&p=nrefreshx%3A0%2Cda_dom_id%3Aveta_top_inner&r=https%3A%2F%2Fdevelopers.naver.com%2Fmain%2F&c=https%3A%2F%2Fwww.naver.com%2F&sv=0.4.1&sn=web&sa=0&rui=8756032541948522";
 
 getFetch(url, (data) => console.log(data));

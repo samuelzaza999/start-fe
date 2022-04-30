@@ -1,3 +1,9 @@
+/**
+ * 성공 : quiz9.html 입력후 가져오기
+ * 에러 : https://daum.net 입력후 가져오기
+ * => 무슨 뜻? 성공하면 저 링크 fetch를 대신 출력하라는 의미?
+ */
+
 const $ = (selector) => document.querySelector(selector);
 
 const App = () => {
@@ -5,15 +11,23 @@ const App = () => {
   $btn = $("#btn");
   $log = $("#log");
 
-  // 가져오기 : fetch 항목에 url 삽입하기
-  fetch("issue.json")
-    .then(function (response) {
-      response.json().then(function (data) {
-        console.log("json data:", data);
+  function onClick() {
+    // 가져오기 : fetch 항목에 url 삽입하기
+    fetch(`${$url.value}`)
+      .then((response) => response.text())
+      .then((res) => {
+        $log.innerText = res;
+      })
+      .catch((err) => {
+        $log.innerText = err;
       });
-    })
-    .catch(function (err) {
-      console.log("Fetch Error :-S", err);
-    });
+  }
+
+  $btn.addEventListener("click", onClick);
+  $url.addEventListener("keyup", (e) => {
+    if (e.keyCode === 13) {
+      onClick();
+    }
+  });
 };
 App();
