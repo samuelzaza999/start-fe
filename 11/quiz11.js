@@ -36,7 +36,6 @@ function search(num) {
   getFetch(searchUrl, (data) => {
     const { documents } = data;
     const docs = documents.map((document) => {
-      // console.log(document);
       return document.contents;
     });
     $docs.innerHTML = docs.join("<hr>"); // 불러오면서 분리
@@ -52,10 +51,10 @@ function search(num) {
 // 개발자 도구 - 콘솔 - 로그 보존 켜기
 $searchForm.addEventListener("submit", (e) => {
   e.preventDefault();
-  search();
+  search(pageNum);
 });
 $moreBtn.addEventListener("click", (e) => {
   pageNum++;
   e.preventDefault();
-  search();
+  search(pageNum);
 });
